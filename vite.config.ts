@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,6 +8,6 @@ export default defineConfig({
   // it listens on all network interfaces,
   // allowing you to access it from your host machine at http://localhost:5173
   server: {
-    host: '0.0.0.0'
-  }
-})
+    host: '0.0.0.0',
+  },
+});

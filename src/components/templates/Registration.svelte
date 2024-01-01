@@ -1,4 +1,6 @@
 <script>
+  import { Link } from 'svelte-routing';
+
   let email = '';
   let password = '';
 
@@ -13,19 +15,30 @@
   <input
     type="email"
     bind:value={email}
-    placeholder="Email"
+    placeholder="Your email"
     class="px-4 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none transition duration-200"
   />
   <input
     type="password"
     bind:value={password}
-    placeholder="Password"
+    placeholder="Your password"
+    class="px-4 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none transition duration-200"
+  />
+  <input
+    type="password"
+    bind:value={password}
+    placeholder="Repeat your password"
     class="px-4 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none transition duration-200"
   />
   <button
     type="submit"
     class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 transition duration-200"
   >
-    Login
+    Sign Up
   </button>
+
+  <!-- Link to Login page -->
+  <p class="text-center mt-4">
+    Already have an account? <Link to="/login" class="text-blue-500">Login</Link>
+  </p>
 </form>

@@ -1,7 +1,9 @@
 import Home from '../Home.svelte';
-import Register from '../components/templates/Register.svelte';
+import Login from '../components/templates/Login.svelte';
+import Registration from '../components/templates/Registration.svelte';
 
 export const routes = [
-    { path: '/', component: Register },
-    { path: '/home', component: Home },
+    { path: '/login', component: Login },
+    { path: '/registration', component: Registration },
+    { path: '/', component: Home },
   ];

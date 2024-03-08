@@ -8,8 +8,10 @@
 
 <QueryClientProvider client={queryClient}>
   <Router>
-    {#each routes as { path, component }}
-      <Route {path} {component} />
+    {#each routes as { path, component, props = { } }}
+      <Route {path}>
+        <svelte:component this={component} {...props} />
+      </Route>
     {/each}
   </Router>
 </QueryClientProvider>

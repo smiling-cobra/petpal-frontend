@@ -1,13 +1,22 @@
 <script>
   import { Link } from 'svelte-routing';
+  import { navigate } from 'svelte-routing';
+  import { post } from '../../services/fetchService';
+  import { useSessionStorage } from '../../composables/useSessionStorage';
 
   let email = '';
   let password = '';
 
+  const { set } = useSessionStorage();
+
   const handleLogin = async () => {
-    // Implement login logic here
-    console.log('Login attempt with', email, password);
-    // On successful login, redirect to another route or set user session
+    try {
+      const result = await post('login', { email, password });
+      set('authToken', result.token);
+      navigate('/user-profile');
+    } catch (e) {
+      console.error('Error during login:', e);
+    }
   };
 </script>
 

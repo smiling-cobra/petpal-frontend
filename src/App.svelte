@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
-  import { Router, Route, navigate } from 'svelte-routing';
-  import { routes } from './routes';
   import { onMount } from 'svelte';
+  import { routes } from './routes';
+  import { Router, Route, navigate } from 'svelte-routing';
+  import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
   import { useSessionStorage } from './composables/useSessionStorage';
 
   const queryClient = new QueryClient();

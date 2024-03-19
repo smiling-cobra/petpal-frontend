@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
   import { Link } from 'svelte-routing';
   import { navigate } from 'svelte-routing';
   import { post } from '../../services/fetchService';
   import { useSessionStorage } from '../../composables/useSessionStorage';
+
+  import Input from '../atoms/Input.svelte';
 
   let email = '';
   let password = '';
@@ -18,20 +20,28 @@
       console.error('Error during login:', e);
     }
   };
+
+  // Handling input changes
+  const handleInput = (event: any, variable: string) => {
+    let value = event.detail;
+
+    if (variable === 'email') email = value;
+    if (variable === 'password') password = value;
+  };
 </script>
 
 <form on:submit|preventDefault={handleLogin} class="flex flex-col gap-4 p-4 max-w-sm mx-auto">
-  <input
+  <Input
     type="email"
     bind:value={email}
     placeholder="Your email"
-    class="px-4 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none transition duration-200"
+    on:input={(event) => handleInput(event, 'email')}
   />
-  <input
+  <Input
     type="password"
     bind:value={password}
     placeholder="Your password"
-    class="px-4 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none transition duration-200"
+    on:input={(event) => handleInput(event, 'password')}
   />
   <button
     type="submit"

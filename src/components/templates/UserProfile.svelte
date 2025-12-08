@@ -1,11 +1,10 @@
 <script>
   import { Link, navigate } from 'svelte-routing';
-
-  let name = '';
-  let email = '';
-  let profilePicture = '/default-profile.png'; // Path to a default profile picture
+  import { user } from '../../stores/user';
 
   const handleLogout = () => {
+    // Clear user data from applicaiton store
+    user.clearUser();
     // Remove the token from the session storage
     sessionStorage.removeItem('authToken');
     // Redirect to the login page
@@ -15,10 +14,10 @@
 
 <div class="flex flex-col items-center gap-4 p-4 max-w-sm mx-auto">
   <!-- svelte-ignore a11y-missing-attribute -->
-  <img src={profilePicture} class="w-24 h-24 rounded-full border border-gray-300" />
+  <img src={$user?.avatar || ''} class="w-24 h-24 rounded-full border border-gray-300" />
   <div class="text-center">
-    <h1 class="text-xl font-semibold">{name}</h1>
-    <p class="text-gray-500">{email}</p>
+    <h1 class="text-xl font-semibold">{$user?.username || 'Joe Doe'}</h1>
+    <p class="text-gray-500">{$user?.email || 'joe.doe@gmail.com'}</p>
   </div>
   <div class="flex flex-col gap-4 w-full">
     <Link

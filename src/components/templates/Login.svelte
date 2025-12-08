@@ -1,9 +1,9 @@
 <script lang="ts">
   import { Link } from 'svelte-routing';
   import { navigate } from 'svelte-routing';
-  import { post } from '../../services/fetchService';
+  import { post } from '../../services/fetch';
   import { useSessionStorage } from '../../composables/useSessionStorage';
-
+  import { user } from '../../stores/user';
   import Input from '../atoms/Input.svelte';
 
   let email = '';
@@ -14,6 +14,7 @@
   const handleLogin = async () => {
     try {
       const result = await post('login', { email, password });
+      user.setUser(result.user);
       set('authToken', result.token);
       navigate('/user-profile');
     } catch (e) {

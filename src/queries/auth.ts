@@ -1,16 +1,6 @@
 import { createQuery } from '@tanstack/svelte-query';
-import { post } from '../services/fetchService';
-
-interface UserRegisterPayload {
-  username: string;
-  email: string;
-  password: string;
-}
-
-interface UserLoginPayload {
-  email: string;
-  password: string;
-}
+import { post } from '../services/fetch';
+import type { UserLoginPayload, UserRegisterPayload } from './types';
 
 export const useUserRegister = (payload: UserRegisterPayload) => {
   return createQuery({

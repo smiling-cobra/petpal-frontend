@@ -6,5 +6,5 @@ export interface User {
   createdAt: string;
   updatedAt: string;
   id: string;
-  avatar: string;
+  avatarUrl: string;
 }

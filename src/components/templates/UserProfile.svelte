@@ -14,7 +14,7 @@
 
 <div class="flex flex-col items-center gap-4 p-4 max-w-sm mx-auto">
   <!-- svelte-ignore a11y-missing-attribute -->
-  <img src={$user?.avatar || ''} class="w-24 h-24 rounded-full border border-gray-300" />
+  <img src={$user?.avatarUrl || ''} class="w-24 h-24 rounded-full border border-gray-300" />
   <div class="text-center">
     <h1 class="text-xl font-semibold">{$user?.username || 'Joe Doe'}</h1>
     <p class="text-gray-500">{$user?.email || 'joe.doe@gmail.com'}</p>
